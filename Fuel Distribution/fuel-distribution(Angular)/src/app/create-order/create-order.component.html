@@ -1,0 +1,74 @@
+<div id="headertxt">
+  <form>
+    <h2>Create Order</h2>
+    <div>
+      <div style="margin-top: 65px">
+        <label for="f_name" class="form-label"
+          >Gas Station Name</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="formGroupExampleInput"
+          placeholder="Name"
+          [(ngModel)]="fuel.f_name"
+          [ngModelOptions]="{standalone: true}"
+        />
+      </div>
+      <div>
+        <label for="f_id" class="form-label"
+          >Gas Station ID</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="formGroupExampleInput"
+          placeholder="ID"
+          [(ngModel)]="fuel.f_id"
+          [ngModelOptions]="{standalone: true}"
+        />
+      </div>
+      <div>
+        <label for="f_capacity" class="form-label"
+          >Select Capacity</label
+        >
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          [(ngModel)]="fuel.f_capacity"
+          [ngModelOptions]="{standalone: true}"
+        >
+          <option selected>3300</option>
+          <option value="6600">6600</option>
+          <option value="13200">13200</option>
+        </select>
+      </div>
+      <div style="margin-bottom: 25px">
+        <label for="f_type" class="form-label">Fuel Type</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          [(ngModel)]="fuel.f_type"
+          [ngModelOptions]="{standalone: true}"
+        >
+          <option selected>95 Petrol</option>
+          <option value="92 Petrol">92 Petrol</option>
+          <option value="Diesel">Diesel</option>
+          <option value="Super Diesel">Super Diesel</option>
+        </select>
+      </div>
+      <div class="d-grid gap-2">
+        <button
+          type="button"
+          class="btn btn-primary"
+          type="submit"
+          (click)="createOrderNow()"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+

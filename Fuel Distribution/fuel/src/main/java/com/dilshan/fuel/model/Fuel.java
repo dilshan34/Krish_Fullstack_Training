@@ -15,6 +15,13 @@ public class Fuel {
     int f_capacity;
     String f_type;
 
+    public Fuel(int f_id, String f_name, int f_capacity, String f_type) {
+        this.f_id = f_id;
+        this.f_name = f_name;
+        this.f_capacity = f_capacity;
+        this.f_type = f_type;
+    }
+
     public int getF_id() {
         return f_id;
     }

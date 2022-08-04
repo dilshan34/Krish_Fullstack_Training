@@ -13,14 +13,14 @@ public class FuelApplication {
         SpringApplication.run(FuelApplication.class, args);
     }
 
-    @Bean
-    CommandLineRunner commandLineRunner (KafkaTemplate<String,String> kafkaTemplate){
-        return args -> {
-
-                kafkaTemplate.send("kafka","Hello kafka ");
-
-
-        };
-    }
+//    @Bean
+//    CommandLineRunner commandLineRunner (KafkaTemplate<String,String> kafkaTemplate){
+//        return args -> {
+//
+//                kafkaTemplate.send("kafka","Hello kafka ");
+//
+//
+//        };
+//    }
 
 }

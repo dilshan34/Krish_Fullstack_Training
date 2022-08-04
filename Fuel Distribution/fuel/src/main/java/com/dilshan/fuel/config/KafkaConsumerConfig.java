@@ -1,6 +1,7 @@
 package com.dilshan.fuel.config;
 
 
+import com.dilshan.fuel.model.Fuel;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -14,8 +15,11 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
+import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
+import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Configuration
@@ -28,18 +32,21 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,bootstrapServers);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,StringSerializer.class);
+        props.put(ErrorHandlingDeserializer.VALUE_DESERIALIZER_CLASS, JsonDeserializer.class);
+        props.put(JsonDeserializer.VALUE_DEFAULT_TYPE, Fuel.class);
         return props;
     }
 
     @Bean
-    public ConsumerFactory<String,String> consumerFactory(){
+    public ConsumerFactory<String, Fuel> consumerFactory(){
         return new DefaultKafkaConsumerFactory<>(consumerConfig());
     }
 
-    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String,String>> factory(
-            ConsumerFactory<String,String> consumerFactory
+    @Bean
+    public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String,Fuel>> factory(
+            ConsumerFactory<String,Fuel> consumerFactory
     ){
-        ConcurrentKafkaListenerContainerFactory<String,String> factory =
+        ConcurrentKafkaListenerContainerFactory<String,Fuel> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory);
         return  factory;

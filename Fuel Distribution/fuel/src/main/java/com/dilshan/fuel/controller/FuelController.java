@@ -34,18 +34,9 @@ public class FuelController {
     public void publish(@RequestBody Fuel fuel){
 
 
-
-        List<Fuel> list = new ArrayList<>();
-        list.add(fuel);
-//        for (Fuel model : list) {
-//            System.out.println(model.getF_name()+" "+" "+model.getF_type());
-//        }
-
         kafkaTemplate.send("fuelCapacity",
                 new Fuel(fuel.getF_id(), fuel.getF_name(), fuel.getF_capacity(), fuel.getF_type()));
 
-       // kafkaTemplate.send("fuelCapacity", String.valueOf(fuel.getF_capacity()));
-        //createOrder.save(fuel);
 
     }
 

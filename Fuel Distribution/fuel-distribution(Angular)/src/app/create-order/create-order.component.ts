@@ -19,7 +19,7 @@ export class CreateOrderComponent implements OnInit {
   public createOrderNow():void {
      this.service.createOrder(this.fuel).subscribe(
       (res)=>{
-        alert(res.f_name+", Your Order created successfully.");
+        alert(", Your Order created successfully.");
       },
       (err)=>{
         alert(err);

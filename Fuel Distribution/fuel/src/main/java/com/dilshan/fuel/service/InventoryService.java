@@ -9,7 +9,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class InventoryService {
-    int fuelCapacity = 10000;
+    int petrol95 = 100_000;
+    int petrol92 = 100_000;
+    int diesel = 100_000;
+    int superDiesel = 100_000;
     String orderCapacity;
     String orderId;
     String orderType;
@@ -35,14 +38,25 @@ public class InventoryService {
             orderType=object.getString("f_type");
             orderCapacity=object.getString("f_capacity");
             orderId = object.getString("f_id");
-            System.out.println(object.getString("f_name"));
-            if(fuelCapacity >= Integer.valueOf(orderCapacity)){
-                fuelCapacity=fuelCapacity- Integer.valueOf(orderCapacity);
-                System.out.println("Fuel Capacity "+orderCapacity);
-                System.out.println(fuelCapacity+" remaining the stock");
-               // kafkaTemplate.send("orderComplete","Your order create Successfully !!!!");
-                createOrder.save(new Fuel(Integer.valueOf(orderId),orderName,Integer.valueOf(orderCapacity),orderType));
-            }else{
+            int capacity = Integer.valueOf(orderCapacity);
+
+            Fuel saveOrder = new Fuel(Integer.valueOf(orderId),orderName,Integer.valueOf(orderCapacity),orderType);
+
+            if (orderType.equals("92 petrol") && petrol92 >= capacity ){
+                petrol92=petrol92-capacity;
+                createOrder.save(saveOrder);
+            }else if(orderType.equals("95 petrol") && petrol95 >= capacity){
+                petrol95=petrol95-capacity;
+                createOrder.save(saveOrder);
+            }else if(orderType.equals("Diesel") && diesel >= capacity){
+                diesel=diesel-capacity;
+                createOrder.save(saveOrder);
+            }else if(orderType.equals("Super Diesel") && superDiesel >= capacity){
+                superDiesel=superDiesel-capacity;
+                createOrder.save(saveOrder);
+            }
+            
+        else{
                 System.out.println("Fuel Capacity Not Enough");
             }
         } catch (JSONException e) {

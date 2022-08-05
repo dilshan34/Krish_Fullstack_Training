@@ -39,13 +39,14 @@ public class InventoryService {
             orderCapacity=object.getString("f_capacity");
             orderId = object.getString("f_id");
             int capacity = Integer.valueOf(orderCapacity);
+            System.out.println("Filling Station name "+orderName);
 
             Fuel saveOrder = new Fuel(Integer.valueOf(orderId),orderName,Integer.valueOf(orderCapacity),orderType);
 
-            if (orderType.equals("92 petrol") && petrol92 >= capacity ){
+            if (orderType.equals("92 Petrol") && petrol92 >= capacity ){
                 petrol92=petrol92-capacity;
                 createOrder.save(saveOrder);
-            }else if(orderType.equals("95 petrol") && petrol95 >= capacity){
+            }else if(orderType.equals("95 Petrol") && petrol95 >= capacity){
                 petrol95=petrol95-capacity;
                 createOrder.save(saveOrder);
             }else if(orderType.equals("Diesel") && diesel >= capacity){
@@ -55,7 +56,7 @@ public class InventoryService {
                 superDiesel=superDiesel-capacity;
                 createOrder.save(saveOrder);
             }
-            
+
         else{
                 System.out.println("Fuel Capacity Not Enough");
             }

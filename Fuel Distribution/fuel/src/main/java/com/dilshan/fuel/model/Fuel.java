@@ -22,6 +22,8 @@ public class Fuel {
         this.f_type = f_type;
     }
 
+    public Fuel(){};
+
     public int getF_id() {
         return f_id;
     }

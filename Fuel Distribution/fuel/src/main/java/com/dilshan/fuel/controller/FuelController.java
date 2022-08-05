@@ -2,13 +2,13 @@ package com.dilshan.fuel.controller;
 
 import com.dilshan.fuel.model.Fuel;
 import com.dilshan.fuel.service.CreateOrder;
+import com.dilshan.fuel.service.FetchOrder;
+import com.dilshan.fuel.service.FetchOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @CrossOrigin(allowedHeaders = "*",origins = "*")
@@ -18,6 +18,8 @@ public class FuelController {
     private KafkaTemplate<String, Fuel> kafkaTemplate;
     @Autowired
     CreateOrder createOrder;
+    @Autowired
+    FetchOrder fetchOrderService;
 
 //    @RequestMapping(value = "/createorder",method = RequestMethod.POST)
 //    public Fuel save(@RequestBody Fuel fuel){
@@ -38,6 +40,11 @@ public class FuelController {
                 new Fuel(fuel.getF_id(), fuel.getF_name(), fuel.getF_capacity(), fuel.getF_type()));
 
 
+    }
+
+    @RequestMapping(value = "/dispatchorders",method = RequestMethod.GET)
+    public List<Fuel> fetch(){
+        return fetchOrderService.fetchAllOrders();
     }
 
 

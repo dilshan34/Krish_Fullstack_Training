@@ -6,19 +6,19 @@
     <div class="card" style="width: 18rem">
       <div class="card-body">
         <h5 class="card-title">Total Dispatch Orders</h5>
-        <p>100</p>
+        <p>{{size}}</p>
       </div>
     </div>
-    <div class="card" style="width: 18rem">
+    <!-- <div class="card" style="width: 18rem">
       <div class="card-body">
         <h5 class="card-title">Total Received Orders</h5>
-        <p>300</p>
+        <p>{{receive}}</p>
       </div>
-    </div>
+    </div> -->
     <div class="card" style="width: 18rem">
       <div class="card-body">
         <h5 class="card-title">Total Pending Orders</h5>
-        <p>200</p>
+        <p>{{pending}}</p>
       </div>
     </div>
   </div>
@@ -32,27 +32,14 @@
         <td>Dispatch Date</td>
       </tr>
       <tbody>
-        <tr>
-          <td>Iresha</td>
-          <td>3300</td>
-          <td>92 petrol</td>
+        <tr *ngFor="let item of res">
+          <td>{{item.f_name}}</td>
+          <td>{{item.f_capacity}}</td>
+          <td>{{item.f_type}}</td>
           <td>7/25/2022</td>
           <td>7/31/2022</td>
         </tr>
-        <tr>
-          <td>Sarada</td>
-          <td>3300</td>
-          <td>95 petrol</td>
-          <td>7/20/2022</td>
-          <td>7/25/2022</td>
-        </tr>
-        <tr>
-          <td>DS</td>
-          <td>6600</td>
-          <td>Diesel</td>
-          <td>7/25/2022</td>
-          <td>7/31/2022</td>
-        </tr>
+
       </tbody>
     </table>
   </div>

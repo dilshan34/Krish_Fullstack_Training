@@ -1,8 +1,7 @@
 package com.dilshan.fuel.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "createorder")
@@ -14,6 +13,24 @@ public class Fuel {
     String f_name;
     int f_capacity;
     String f_type;
+    int dispatch;
+
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
+    Date submit_date;
+
+    @PrePersist
+    private void onCreate(){
+        submit_date=new Date();
+    }
+
+    public int getDispatch() {
+        return dispatch;
+    }
+
+    public void setDispatch(int dispatch) {
+        this.dispatch = dispatch;
+    }
 
     public Fuel(int f_id, String f_name, int f_capacity, String f_type) {
         this.f_id = f_id;
@@ -38,6 +55,18 @@ public class Fuel {
 
     public void setF_name(String f_name) {
         this.f_name = f_name;
+    }
+
+    public Date getSubmit_date() {
+        return submit_date;
+    }
+
+    public Fuel(Date submit_date) {
+        this.submit_date = submit_date;
+    }
+
+    public void setSubmit_date(Date submit_date) {
+        this.submit_date = submit_date;
     }
 
     public int getId() {

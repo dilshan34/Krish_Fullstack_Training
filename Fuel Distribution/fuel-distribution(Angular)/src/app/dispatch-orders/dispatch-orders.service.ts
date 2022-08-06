@@ -10,7 +10,7 @@ export class DispatchOrdersService {
 
   constructor(private httpService:HttpService) { }
 
-  getDispatchOrders():Observable<DispatchOrders[]>{
+  getDispatchOrders(){
     return this.httpService.getAllDispatchOrders();
   }
 }

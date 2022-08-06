@@ -16,4 +16,15 @@ public class FetchOrderService implements FetchOrder{
     public List<Fuel> fetchAllOrders(){
         return dispatchOrderRepository.findAll();
     }
+
+    public List<Fuel> AllOrders(){
+        return dispatchOrderRepository.findAllOrders();
+    }
+
+    @Override
+    public List<Fuel> findById(int id) {
+        return dispatchOrderRepository.findById(id);
+    }
+
+
 }

@@ -5,6 +5,7 @@ import com.dilshan.fuel.service.CreateOrder;
 import com.dilshan.fuel.service.FetchOrder;
 import com.dilshan.fuel.service.FetchOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,9 +44,22 @@ public class FuelController {
     }
 
     @RequestMapping(value = "/dispatchorders",method = RequestMethod.GET)
+
     public List<Fuel> fetch(){
         return fetchOrderService.fetchAllOrders();
     }
 
+    @RequestMapping(value = "/allorders",method = RequestMethod.GET)
 
+    public List<Fuel> fetchAllOrders(){
+        return fetchOrderService.AllOrders();
+    }
+
+
+    @GetMapping("/dispatchorders/{id}")
+    public List<Fuel> getOrderById(
+            @PathVariable(value = "id") int id)
+    {
+        return fetchOrderService.findById(id);
+    }
 }

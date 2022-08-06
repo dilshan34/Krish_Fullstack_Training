@@ -6,4 +6,8 @@ import java.util.List;
 
 public interface FetchOrder {
     List<Fuel> fetchAllOrders();
+
+     List<Fuel> findById(int id);
+
+     List<Fuel> AllOrders();
 }

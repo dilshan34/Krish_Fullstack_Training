@@ -11,8 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DispatchOrdersComponent implements OnInit {
   orders: any[] = orders;
-  li:any;
-  lis=[];
+  res:any;
 
   //constructor(private dispatchOrderService:DispatchOrdersService) { }
   constructor(private http: HttpClient) {}
@@ -26,8 +25,8 @@ export class DispatchOrdersComponent implements OnInit {
 
     this.http.get('http://localhost:9090/dispatchorders').subscribe(Response=>{
       console.log(Response)
-      this.li=Response;
-      this.lis=this.li.list;
+      this.res=Response;
+
     });
 
   }

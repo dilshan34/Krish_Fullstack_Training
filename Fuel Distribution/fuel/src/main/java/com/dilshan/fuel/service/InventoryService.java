@@ -4,7 +4,6 @@ import com.dilshan.fuel.model.Fuel;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -19,7 +18,7 @@ public class InventoryService {
     String orderName;
 
     @Autowired
-    CreateOrder createOrder;
+    CreateOrderService createOrderService;
 
 //    @Autowired
 //    KafkaTemplate<String,String> kafkaTemplate;
@@ -45,16 +44,16 @@ public class InventoryService {
 
             if (orderType.equals("92 Petrol") && petrol92 >= capacity ){
                 petrol92=petrol92-capacity;
-                createOrder.save(saveOrder);
+                createOrderService.save(saveOrder);
             }else if(orderType.equals("95 Petrol") && petrol95 >= capacity){
                 petrol95=petrol95-capacity;
-                createOrder.save(saveOrder);
+                createOrderService.save(saveOrder);
             }else if(orderType.equals("Diesel") && diesel >= capacity){
                 diesel=diesel-capacity;
-                createOrder.save(saveOrder);
+                createOrderService.save(saveOrder);
             }else if(orderType.equals("Super Diesel") && superDiesel >= capacity){
                 superDiesel=superDiesel-capacity;
-                createOrder.save(saveOrder);
+                createOrderService.save(saveOrder);
             }
 
         else{

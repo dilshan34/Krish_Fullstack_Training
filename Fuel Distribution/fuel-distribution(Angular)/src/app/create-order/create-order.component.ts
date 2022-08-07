@@ -20,6 +20,7 @@ export class CreateOrderComponent implements OnInit {
      this.service.createOrder(this.fuel).subscribe(
       (res)=>{
         alert("Your Order created successfully.");
+        window.location.reload();
       },
       (err)=>{
         alert(err);

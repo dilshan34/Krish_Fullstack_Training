@@ -23,6 +23,7 @@ export class DispatchOrdersComponent implements OnInit {
     console.log("hi "+this.even);
     new dispatchOrder(5);
     this.allOrders(this.even);
+    window.location.reload();
  }
 
   constructor(private http: HttpClient,private service:DispatchOrdersService) {}

@@ -3,12 +3,9 @@ package com.dilshan.fuel.controller;
 import com.dilshan.fuel.model.Fuel;
 import com.dilshan.fuel.model.SubmitOrder;
 import com.dilshan.fuel.repository.AllOrderRepository;
-import com.dilshan.fuel.repository.DispatchOrderRepository;
-import com.dilshan.fuel.service.CreateOrder;
+import com.dilshan.fuel.service.CreateOrderService;
 import com.dilshan.fuel.service.FetchOrder;
-import com.dilshan.fuel.service.FetchOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +18,7 @@ public class FuelController {
     @Autowired
     private KafkaTemplate<String, Fuel> kafkaTemplate;
     @Autowired
-    CreateOrder createOrder;
+    CreateOrderService createOrderService;
     @Autowired
     FetchOrder fetchOrderService;
     @Autowired

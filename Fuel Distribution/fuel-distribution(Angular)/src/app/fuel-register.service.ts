@@ -16,7 +16,6 @@ export class Fuel{
   providedIn: 'root',
 })
 export class FuelRegisterService {
-  private baseUrl = 'http://localhost:9090/createorder';
   constructor(private http: HttpClient) {}
 
   public createOrder(fuel:object){

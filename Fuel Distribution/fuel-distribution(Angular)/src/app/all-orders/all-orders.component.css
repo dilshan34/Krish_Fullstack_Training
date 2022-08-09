@@ -10,3 +10,10 @@
   justify-content: center;
   margin-bottom: 40px;
 }
+
+#card-text{
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: bold;
+}

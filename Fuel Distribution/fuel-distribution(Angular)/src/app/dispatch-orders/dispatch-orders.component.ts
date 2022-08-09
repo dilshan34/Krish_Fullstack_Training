@@ -11,42 +11,41 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DispatchOrdersComponent implements OnInit {
   orders: any[] = orders;
-  res:any;
-  even:any;
+  res: any;
+  even: any;
   fuel: dispatchOrder = new dispatchOrder(0);
 
-  @Input() getId:number=0;
+  @Input() getId: number = 0;
 
-  myClickFunction(event : Event) {
-
-    this.even=event;
-    console.log("hi "+this.even);
+  myClickFunction(event: Event) {
+    this.even = event;
+    console.log('hi ' + this.even);
     new dispatchOrder(5);
     this.allOrders(this.even);
     window.location.reload();
- }
-
-  constructor(private http: HttpClient,private service:DispatchOrdersService) {}
-  ngOnInit(): void {
-    this.http.get('http://localhost:9090/dispatchorders').subscribe(Response=>{
-      console.log(Response)
-      this.res=Response;
-
-    });
-
-
   }
 
-  public allOrders(res:any):void {
+  constructor(
+    private http: HttpClient,
+    private service: DispatchOrdersService,
+  ) {}
+  ngOnInit(): void {
+    this.http
+      .get('http://localhost:9090/dispatchorders')
+      .subscribe((Response) => {
+        console.log(Response);
+        this.res = Response;
+      });
+  }
+
+  public allOrders(res: any): void {
     this.service.dispatchOrder(res).subscribe(
-     (res)=>{
-       alert("Your Order created successfully.");
-     },
-     (err)=>{
-       alert(err);
-
-     }
-    )
- }
-
+      (res) => {
+        alert('Your Order created successfully.');
+      },
+      (err) => {
+        alert(err);
+      }
+    );
+  }
 }

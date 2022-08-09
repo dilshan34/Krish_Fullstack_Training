@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpService } from '../shared/http.service';
-import { DispatchOrders } from './dispatch-orders.model';
 
 export class dispatchOrder {
   constructor(public id: any) {}

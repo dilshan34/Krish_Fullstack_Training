@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { DatePipe } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateOrderComponent } from './create-order/create-order.component';
@@ -15,7 +15,7 @@ import {HttpClientModule} from '@angular/common/http'
     AppComponent,
     CreateOrderComponent,
     DispatchOrdersComponent,
-    AllOrdersComponent
+    AllOrdersComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +30,7 @@ import {HttpClientModule} from '@angular/common/http'
 
     ]),
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

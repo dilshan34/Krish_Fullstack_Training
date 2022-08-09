@@ -14,7 +14,9 @@ public interface DispatchOrderRepository extends JpaRepository<Fuel,Integer> {
 
     @Query("FROM Fuel  WHERE dispatch= 0 ")
     List<Fuel> findAll();
-    List<Fuel> findById(int id);
+
+    @Query("from Fuel where f_id=:f_id")
+    List<Fuel> findById(@Param("f_id") int id);
 
     @Query("FROM Fuel  WHERE dispatch= 1 ")
     List<Fuel> findAllOrders();

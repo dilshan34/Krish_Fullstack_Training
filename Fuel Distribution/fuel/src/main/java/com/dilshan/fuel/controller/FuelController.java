@@ -61,9 +61,9 @@ public class FuelController {
     }
 
 
-    @GetMapping("/dispatchorders/{id}")
+    @GetMapping("/checkOrders/{f_id}")
     public List<Fuel> getOrderById(
-            @PathVariable(value = "id") int id)
+            @PathVariable(value = "f_id") int id)
     {
         return fetchOrderService.findById(id);
     }

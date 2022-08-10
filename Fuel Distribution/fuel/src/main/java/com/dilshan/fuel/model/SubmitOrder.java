@@ -12,14 +12,7 @@ public class SubmitOrder {
     int dispatch;
     Date dispatch_date;
 
-//    @Temporal(TemporalType.DATE)
-//    @Column(nullable = false)
-//    Date dispatch_date;
-//
-//    @PrePersist
-//    private void onCreate(){
-//        dispatch_date=new Date();
-//    }
+
 
     public Date getDispatch_date() {
         return dispatch_date;

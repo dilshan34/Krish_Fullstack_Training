@@ -18,7 +18,7 @@ export class DispatchOrdersService {
   }
 
   public dispatchOrder(order: object) {
-    console.log({ id: order, dispatch: 1 });
+    console.log({ id: order, dispatch: 1 }+"----");
 
     return this.http.put<dispatchOrder>('http://localhost:9090/submitOrder', {
       id: order,

@@ -8,7 +8,8 @@ import { DispatchOrdersComponent } from './dispatch-orders/dispatch-orders.compo
 import { AllOrdersComponent } from './all-orders/all-orders.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import {HttpClientModule} from '@angular/common/http';
+import { CheckOrdersComponent } from './check-orders/check-orders.component'
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http'
     CreateOrderComponent,
     DispatchOrdersComponent,
     AllOrdersComponent,
+    CheckOrdersComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,7 @@ import {HttpClientModule} from '@angular/common/http'
       { path: 'create', component: CreateOrderComponent },
       { path: 'all', component: AllOrdersComponent },
       { path: 'dispatch', component: DispatchOrdersComponent },
+      { path: 'check', component: CheckOrdersComponent },
       { path: '', redirectTo: 'create',pathMatch:'full' },
 
     ]),

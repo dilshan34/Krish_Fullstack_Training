@@ -1,0 +1,49 @@
+<div>
+  <div id="check_btn">
+    <div>
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="Enter Gas station ID"
+        [(ngModel)]="id"
+      />
+    </div>
+    <div class="d-grid gap-2">
+      <button
+        class="btn btn-primary"
+        type="button"
+        style="margin-left: 25px"
+        (click)="onCheck()"
+      >
+        Check
+      </button>
+    </div>
+  </div>
+</div>
+<div id="headline">
+  <h2>All Orders</h2>
+</div>
+<div>
+  <div class="row" style="margin-left: 10px">
+    <table class="table">
+      <tr style="background-color: rgb(174, 174, 180)">
+        <td>Station Name</td>
+        <td>Volume</td>
+        <td>Fuel Type</td>
+        <td>Status</td>
+      </tr>
+      <tbody>
+        <tr *ngFor="let item of res" >
+          <td>{{ item.f_name }}</td>
+          <td>{{ item.f_capacity }}</td>
+          <td>{{ item.f_type }}</td>
+          <Td
+            ><div *ngIf="item.dispatch; else elseBlock">Dispatched</div>
+            <ng-template #elseBlock> Pending </ng-template></Td
+          >
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

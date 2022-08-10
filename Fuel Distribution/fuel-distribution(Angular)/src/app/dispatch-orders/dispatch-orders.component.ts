@@ -13,14 +13,13 @@ export class DispatchOrdersComponent implements OnInit {
   orders: any[] = orders;
   res: any;
   even: any;
-  fuel: dispatchOrder = new dispatchOrder(0);
+  //fuel: dispatchOrder = new dispatchOrder(0);
 
   @Input() getId: number = 0;
 
   myClickFunction(event: Event) {
     this.even = event;
     console.log('hi ' + this.even);
-    new dispatchOrder(5);
     this.allOrders(this.even);
     window.location.reload();
   }
@@ -33,7 +32,7 @@ export class DispatchOrdersComponent implements OnInit {
     this.http
       .get('http://localhost:9090/dispatchorders')
       .subscribe((Response) => {
-        console.log(Response);
+        console.log(Response,"========");
         this.res = Response;
       });
   }
@@ -41,7 +40,7 @@ export class DispatchOrdersComponent implements OnInit {
   public allOrders(res: any): void {
     this.service.dispatchOrder(res).subscribe(
       (res) => {
-        alert('Your Order created successfully.');
+        // alert('Your Order dispatched successfully.');
       },
       (err) => {
         alert(err);
